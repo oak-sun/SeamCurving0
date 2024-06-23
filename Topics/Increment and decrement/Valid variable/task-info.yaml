@@ -1,0 +1,17 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: --a
+  - text: a-=1
+  - text: -a
+  - text: 1-=a
+  - text: a-
+  - text: a--
+files:
+  - name: src/Main.kt
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10781#comment
+status: Solved
+record: -1
+local_check: false

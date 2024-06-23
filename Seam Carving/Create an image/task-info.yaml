@@ -1,0 +1,26 @@
+type: edu
+files:
+  - name: src/seamcarving/Main.kt
+    visible: true
+    learner_created: false
+  - name: test/SeamCarvingTest.java
+    visible: false
+    learner_created: false
+  - name: test/out3.png
+    visible: true
+    is_binary: true
+    learner_created: true
+  - name: test/out1.png
+    visible: true
+    is_binary: true
+    learner_created: true
+  - name: test/out2.png
+    visible: true
+    is_binary: true
+    learner_created: true
+feedback_link: https://hyperskill.org/learn/step/9015#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 17 Jun 2024 22:24:10 UTC"
+record: 1

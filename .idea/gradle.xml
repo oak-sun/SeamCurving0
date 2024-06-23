@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="distributionType" value="WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Seam Carving/task" />
+            <option value="$PROJECT_DIR$/Seam Carving/task/build/classes/java" />
+            <option value="$PROJECT_DIR$/Seam Carving/task/build/classes/kotlin" />
+            <option value="$PROJECT_DIR$/Seam Carving/task/build/generated/sources/annotationProcessor/java" />
+            <option value="$PROJECT_DIR$/Seam Carving/task/build/generated/sources/headers/java" />
+            <option value="$PROJECT_DIR$/Seam Carving/task/build/reports/tests" />
+            <option value="$PROJECT_DIR$/Seam Carving/task/build/test-results" />
+            <option value="$PROJECT_DIR$/Seam Carving/task/build/tmp" />
+            <option value="$PROJECT_DIR$/Topics/Abstract classes/Abstract bridge" />
+            <option value="$PROJECT_DIR$/Topics/Abstract classes/Abstract with interface" />
+            <option value="$PROJECT_DIR$/Topics/Abstract classes/Abstraction forger" />
+            <option value="$PROJECT_DIR$/Topics/Abstract classes/Calculator" />
+            <option value="$PROJECT_DIR$/Topics/Abstract classes/Concrete" />
+            <option value="$PROJECT_DIR$/Topics/Abstract classes/Declaration" />
+            <option value="$PROJECT_DIR$/Topics/Abstract classes/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Grouping collections/Application" />
+            <option value="$PROJECT_DIR$/Topics/Grouping collections/Hacking the Matrix" />
+            <option value="$PROJECT_DIR$/Topics/Grouping collections/Harry and the Spell Power" />
+            <option value="$PROJECT_DIR$/Topics/Grouping collections/List of students" />
+            <option value="$PROJECT_DIR$/Topics/Grouping collections/The secret is inside the spell" />
+            <option value="$PROJECT_DIR$/Topics/Grouping collections/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Grouping collections/Which definition is correct" />
+            <option value="$PROJECT_DIR$/Topics/Increment and decrement/At the same time" />
+            <option value="$PROJECT_DIR$/Topics/Increment and decrement/Find the number" />
+            <option value="$PROJECT_DIR$/Topics/Increment and decrement/Increment, then decrement an integer" />
+            <option value="$PROJECT_DIR$/Topics/Increment and decrement/Order of precedence" />
+            <option value="$PROJECT_DIR$/Topics/Increment and decrement/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Increment and decrement/Valid variable" />
+            <option value="$PROJECT_DIR$/Topics/Increment and decrement/Value of b" />
+            <option value="$PROJECT_DIR$/Topics/Introduction to Kotlin reflection/No secrets with reflections" />
+            <option value="$PROJECT_DIR$/Topics/Introduction to Kotlin reflection/Not private anymore" />
+            <option value="$PROJECT_DIR$/Topics/Introduction to Kotlin reflection/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Introduction to Kotlin reflection/What is inside" />
+            <option value="$PROJECT_DIR$/Topics/Lambda with receiver/Advantages of lambdas with receivers" />
+            <option value="$PROJECT_DIR$/Topics/Lambda with receiver/Course Builder" />
+            <option value="$PROJECT_DIR$/Topics/Lambda with receiver/Create HTML Tags" />
+            <option value="$PROJECT_DIR$/Topics/Lambda with receiver/Creating a Tag Builder" />
+            <option value="$PROJECT_DIR$/Topics/Lambda with receiver/Test if a number is divisible" />
+            <option value="$PROJECT_DIR$/Topics/Lambda with receiver/The Magic function" />
+            <option value="$PROJECT_DIR$/Topics/Lambda with receiver/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Lambda with receiver/Which operations are correct" />
+            <option value="$PROJECT_DIR$/Topics/Lambda with receiver/Working with Accounts" />
+            <option value="$PROJECT_DIR$/Topics/Sealed class and interface/Container of colors" />
+            <option value="$PROJECT_DIR$/Topics/Sealed class and interface/Theory" />
+            <option value="$PROJECT_DIR$/util" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

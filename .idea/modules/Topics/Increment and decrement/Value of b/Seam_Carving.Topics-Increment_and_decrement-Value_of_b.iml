@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":Topics-Increment_and_decrement-Value_of_b" external.linked.project.path="$MODULE_DIR$/../../../../../Topics/Increment and decrement/Value of b" external.root.project.path="$MODULE_DIR$/../../../../.." external.system.id="GRADLE" external.system.module.group="Seam Carving" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../Topics/Increment and decrement/Value of b">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Increment and decrement/Value of b/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Increment and decrement/Value of b/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Increment and decrement/Value of b/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

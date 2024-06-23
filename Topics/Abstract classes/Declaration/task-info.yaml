@@ -1,0 +1,15 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: <code>abstract class Animal</code>
+  - text: "<code>abstract class Bird(val id: Int)</code>"
+  - text: "<code>class Chicken : Animal, Bird</code>"
+  - text: "<code>class Penguin(id: Int) : Bird(id)</code>"
+files:
+  - name: src/Main.kt
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/31245#comment
+status: Solved
+record: -1
+local_check: false

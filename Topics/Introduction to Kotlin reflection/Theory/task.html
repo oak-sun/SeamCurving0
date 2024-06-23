@@ -1,0 +1,105 @@
+<div class="step-text">
+<p>Today we are going to enter the world of metaprogramming and get the big picture of one of the best powerful tools you can add to your coding arsenal – reflection.</p>
+<h5 id="metaprogramming">Metaprogramming </h5>
+<p>Before diving into reflection, we need to talk about metaprogramming. Metaprogramming refers to a variety of ways a program gets knowledge about itself or manipulates itself. In metaprogramming, the input is the code, which provides another code or changes the running code behavior.</p>
+<p>In Kotlin, we can do metaprogramming in many ways, such as annotations or reflection. Reflection means writing a program that can observe itself and modify itself at runtime. </p>
+<p>Reflection is one of the most awesome features in Kotlin: it enables you to modify, introspect, and create objects, functions and methods at runtime, which gives you a lot of flexibility to build and maintain dynamic applications. Reflection is used profusely in frameworks and libraries, in functional and reactivate programming in general. Reflection can also be used for testing.</p>
+<p>Reflection in Kotlin can be done with the Java reflection API or Kotlin reflection, but in this topic, we will focus only on Java reflection.</p>
+<h5 id="observe-with-reflection">Observe with reflection </h5>
+<p>As we've already mentioned, with reflection code can observe and modify itself at runtime. How can it observe itself? Consider the following example:</p>
+<pre><code class="language-kotlin">class Friend {
+    private val friendName = "Eyad"
+    private val friendAge = 20
+}
+</code></pre>
+<p>It's a simple class with two private and immutable members. Is it possible to write code like the one below?</p>
+<pre><code class="language-kotlin">fun main() {
+    val friend = Friend()
+    println(friend.friendName)
+}</code></pre>
+<p>The short answer is "No". As you have already guessed, <code class="language-kotlin">friendName</code> is private.</p>
+<p>Is there a way we can see it, though ? Consider the code below:</p>
+<pre><code class="language-kotlin">fun main() {
+    val friend = Friend() // this is normal object
+    val friendFields = friend.javaClass.declaredFields // (2)
+    friendFields.forEach { println(it) }
+}
+// output:
+// private final java.lang.String Friend.friendName
+// private int Friend.friendAge</code></pre>
+<p>OMG! We do see the private members!</p>
+<p><code class="language-kotlin">javaClass</code> : it is a property in Kotlin that returns the <code class="language-kotlin">java.lang.Class</code> representation of the class of an object at runtime.</p>
+<p><code class="language-kotlin">declaredFields</code>: as the name implies, it returns an array of the declared fields in this class.</p>
+<p>What about the output? You may notice that String in Java is a class but int is a primitive data type. We simply accessed the class by <code class="language-kotlin">javaClass</code>.</p>
+<h5 id="modify-with-reflection">Modify with reflection</h5>
+<p> Now, a new plan: we want to change private and immutable members. Of course, the code below will not work:</p>
+<pre><code class="language-kotlin">fun main() {
+    val friend = Friend()
+    friend.friendName = "Alex"
+}</code></pre>
+<p>How can we make it work? Let's consider it step by step.</p>
+<p>Step one:</p>
+<pre><code class="language-kotlin">fun main() {
+    val friend = Friend() 
+    val field = friend.javaClass.getDeclaredField("friendName")
+}</code></pre>
+<p>First, we used <code class="language-kotlin">javaClass</code> again to return the runtime Java class of this object.</p>
+<p>Second, <code class="language-kotlin">getDeclaredField</code> returns just one declared <code class="language-kotlin">Field</code> of the name we passed as an argument. Now that we have the field, let's make it accessible (not private).</p>
+<p>Step two:</p>
+<pre><code class="language-kotlin">field.isAccessible = true </code></pre>
+<p>Now it's not private anymore.</p>
+<p>Step three: let's change its value like in the example below: </p>
+<pre><code class="language-kotlin">field.set(friend,"Alex")</code></pre>
+<p><code class="language-kotlin">set()</code> takes two arguments: the object that you want to change its field and the value that will be changed for it. </p>
+<p>Here's the whole code with the <code class="language-kotlin">println()</code> function to show the results: </p>
+<pre><code class="language-kotlin">fun main() {
+    val friend = Friend()
+    val field = friend.javaClass.getDeclaredField("friendName")
+    field.isAccessible = true
+    field.set(friend,"Alex")
+    println(field.get(friend)) 
+}
+// output:
+// Alex
+
+</code></pre>
+<p>Notice that <code class="language-kotlin">get(obj)</code> returns the value of the field. That's it. We managed to change the value of immutable private members by using reflection. It's awesome and quite impressive, isn't it? </p>
+<h5 id="the-javaclass">The javaClass</h5>
+<p>Of course, it's not exclusively about fields only, we can do the same with methods, for example:</p>
+<pre><code class="language-kotlin">fun main() {
+    val friend = Friend() //just an object 
+    val methods = friend.javaClass.declaredMethods // array of methods
+    methods.forEach {
+        it.isAccessible = true // make the methods not private
+        println(it.invoke(friend)) // invoking the methods 
+    }
+}
+
+class Friend {
+    private val friendName = "Eyad"
+    private var friendAge = 20
+
+    private fun greeting(): String {
+        return "Hello, $friendName"
+    }
+    private fun tellSecretMessage(): String{
+        return "I am not in danger. I am the danger, $friendName"
+    }
+}
+
+// Output:
+// Hello, Eyad
+// I am not in danger. I am the danger, Eyad</code></pre>
+<p>Basically, we did the same thing here, except that instead of using <code class="language-kotlin">get()</code> to know the value, we used <code class="language-kotlin">invoke(obj)</code> with the method.</p>
+<p>Besides fields and methods, there are also constructors and annotations. We will discuss those in further topics.</p>
+<h5 id="reflection-disadvantages">Reflection disadvantages </h5>
+<p>Reflection is powerful, but with great power comes great responsibility. You should be also aware of its disadvantages, and here are some of those:</p>
+<ul>
+<li>Security: as you've seen, we could access and modify private members.</li>
+<li>Code complexity: reflection decreases the clarity and readability of code, as it may involve some code you don't see.</li>
+<li>Maintenance: it's difficult to find bugs at compile time.</li>
+<li>Performance: reflection requires extra time for processing the structure of the code, which slows down the execution of the program.</li>
+</ul>
+<h5 id="conclusion">Conclusion </h5>
+<p>We've learned what metaprogramming is and how to use it with reflection. Reflection enables the code to observe and modify itself at runtime. Reflection provides great power and flexibility and is used a lot in many frameworks, like Spring, but you should be careful when using it, as it does have some disadvantages concerning such issues as security, complexity, maintenance, and performance. Now, let's practice.</p>
+</div>

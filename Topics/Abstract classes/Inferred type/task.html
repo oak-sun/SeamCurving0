@@ -1,0 +1,25 @@
+<div class="step-text">
+<p></p>
+<p>We have the following code:</p>
+<pre><code class="language-kotlin">abstract class Animal() {
+    abstract fun makeSound(): String
+}
+
+class Cat: Animal() {
+    override fun makeSound() = "Meow!"
+}
+
+class Dog: Animal() {
+    override fun makeSound() = "Woof!"
+}
+
+fun main() {
+    val cat = Cat()
+    val dog = Dog()
+    val animals = mutableListOf(cat, dog)
+    for (animal in animals) {
+        println(animal.makeSound())
+    }
+}</code></pre>
+<p>What is the <strong>inferred type</strong> of the variable <code class="language-kotlin">animals</code>?</p>
+</div>

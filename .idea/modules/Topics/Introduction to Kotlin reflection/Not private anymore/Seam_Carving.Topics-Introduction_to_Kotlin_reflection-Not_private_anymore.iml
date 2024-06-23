@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":Topics-Introduction_to_Kotlin_reflection-Not_private_anymore" external.linked.project.path="$MODULE_DIR$/../../../../../Topics/Introduction to Kotlin reflection/Not private anymore" external.root.project.path="$MODULE_DIR$/../../../../.." external.system.id="GRADLE" external.system.module.group="Seam Carving" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Kotlin reflection/Not private anymore">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Kotlin reflection/Not private anymore/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Kotlin reflection/Not private anymore/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Kotlin reflection/Not private anymore/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

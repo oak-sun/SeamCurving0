@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: a
+  - text: b
+  - text: c
+  - text: d
+  - text: e
+  - text: f
+files:
+  - name: src/Main.kt
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20956#comment
+status: Unchecked
+record: -1
+custom_name: Which operations are correct?
+local_check: false

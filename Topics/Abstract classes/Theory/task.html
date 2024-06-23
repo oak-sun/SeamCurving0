@@ -1,0 +1,196 @@
+<div class="step-text">
+<p>Suppose you want to create a simulation of a zoo. You have come up with a variety of different animal species and you want to define their behaviors. You want your animals to eat, sleep, make sounds, and move around. All animals should be able to do all these things, but the exact way they do it should depend on the species of the animal.</p>
+<p>In practice, this means that you need to create a class for each animal species and define the corresponding methods. To make the process easier and more structured, you should use <strong><a class="theory-lookup not-relevant" href="/learn/step/31243" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, an abstract class is a class that cannot be instantiated directly and serves as a blueprint for other classes. | It acts as a partially implemented class, providing a common structure and behavior that subclasses can inherit and build upon. Abstract classes can have both abstract and non-abstract members (properties and methods). They can also serve as a base class for other abstract classes, where subclasses are responsible for implementing any abstract methods inherited from both the superclass and its direct abstract superclass. Abstract classes are declared using the abstract modifier in the class declaration and can have constructors to initialize class properties and ensure subclasses meet certain requirements or have initial values.">abstract classes</a></strong>. In this topic, we will discuss what abstract classes are and how to use them in your code.</p>
+<h5 id="understanding-abstract-classes">Understanding abstract classes</h5>
+<p>An <strong>abstract class</strong> is like a blueprint that can be used to create other classes. Instead of using the blueprint directly, we create new objects based on the blueprint and work with those objects. </p>
+<p>Let's go back to the zoo example. You might have an abstract class <code class="language-kotlin">Animal</code> that defines common behavior for all animals, such as eating and sleeping. This class would also have abstract methods for making sounds and moving, since different animals make different sounds and move in different ways. After creating this <code class="language-kotlin">Animal</code> blueprint, you could use it to create subclasses for specific animals, such as <code class="language-kotlin">Cat</code> and <code class="language-kotlin">Dog</code>, which provide their own implementations of the abstract methods.</p>
+<p>By using an abstract class in this way, you can ensure that all the subclasses have a consistent interface and share common behavior, while also allowing them to have their own unique behavior. This can make your code more <strong>organized</strong>, <strong>reusable</strong>, and <strong>easier to maintain</strong>.</p>
+<p>In summary, an abstract class is a class that cannot be instantiated directly but serves as a blueprint for other classes. It acts as a partially implemented class, providing a common structure and behavior that subclasses can inherit and build upon.</p>
+<h5 id="declaration">Declaration</h5>
+<p>Abstract classes in Kotlin are declared using the <code class="language-kotlin">abstract</code> modifier in the class declaration.</p>
+<pre><code class="language-kotlin">abstract class Animal</code></pre>
+<p>Just like any other class, abstract classes can also have constructors. These constructors are used to initialize the class properties and can help ensure that subclasses meet certain requirements or have initial values.</p>
+<pre><code class="language-kotlin">abstract class Animal(val id: Int)</code></pre>
+<p>An abstract class can have both abstract and non-abstract members (properties and methods). To declare a member as abstract, you must use the <code class="language-kotlin">abstract</code> keyword explicitly. Notice that an abstract member does not have a body (an implementation) in its class.</p>
+<pre><code class="language-kotlin">abstract class Animal(val id: Int) {
+    val name: String // We get here a compile-time error: property must be initialized or be abstract
+    
+    abstract fun makeSound()
+
+    fun isSleeping(): Boolean {
+        ...
+        return false
+    }
+}</code></pre>
+<p>In this example, the class <code class="language-kotlin">Animal</code> is declared as <strong>abstract</strong> using the <code class="language-kotlin">abstract</code> <a class="theory-lookup not-relevant" href="/learn/step/31243" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a keyword is a word that has a special meaning in the language and cannot be changed by the programmer. | It is used to define the structure and behavior of the code. Examples of keywords in Kotlin include `fun` (used to define a function), `var` (used to define a variable), and `if` (used to define a conditional statement). Keywords are reserved words in Kotlin and cannot be used as identifiers.">keyword</a>. It contains a member property that doesn't have an initializer, therefore, it must be abstract or we will get a compile-time error. Additionally, there are two <a class="theory-lookup not-relevant" href="/learn/step/31243" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a member function is a function that is declared within a class and implements a common behavior for a set of objects that belong to the same class. | It is called a member function because it works with a specific object of a class and can access its fields. The keyword 'this' represents the current instance of the class and is used to call the member function.">member functions</a>: the first is an abstract function <code class="language-kotlin">makeSound()</code>, which is declared without an implementation, the second is a non-abstract function, <code class="language-kotlin">isSleeping()</code>, which provides a common implementation that can be inherited by subclasses.</p>
+<p>If, after creating an abstract class, we attempt to create an object of it, we will get a compile-time error: we cannot create an instance of an abstract class.</p>
+<p></p>
+<div class="alert alert-primary">By default, abstract classes in Kotlin are <code class="language-kotlin">open</code> to being extended, and their abstract methods and properties are open to being overridden.</div>
+<h5 id="implementation">Implementation</h5>
+<p>When a class extends an abstract class, it must provide implementations for all the abstract members declared in the abstract class.</p>
+<pre><code class="language-kotlin">abstract class Animal {
+    abstract fun move()
+    abstract fun makeSound()
+
+    fun eat(): Boolean = false
+    fun sleep(): Boolean = false
+}
+
+class Cat : Animal() {
+    override fun move() {
+        // Implementation specific to how the cat moves
+    }
+
+    override fun makeSound() {
+        // Implementation specific to what sound the cat makes
+    }
+}</code></pre>
+<p>In this example, the class <code class="language-kotlin">Cat</code> extends the abstract class <code class="language-kotlin">Animal</code>. It must override and provide specific implementations for the <code class="language-kotlin">move()</code> and <code class="language-kotlin">makeSound()</code> functions declared in the <code class="language-kotlin">Animal</code> class. This ensures that each subclass provides its own implementation of the abstract methods.</p>
+<p>We cannot create objects of an abstract class directly, but we can create references of abstract class types and assign objects of concrete subclasses to them. For example:</p>
+<pre><code class="language-kotlin">val cat: Animal = Cat()
+cat.move()
+cat.makeSound()</code></pre>
+<h5 id="inheritance">Inheritance</h5>
+<p>An abstract class can also serve as a <a class="theory-lookup not-relevant" href="/learn/step/31243" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a base class is a class that forms the foundation for other classes, also known as derived classes. | It can have multiple constructors, including a primary constructor and secondary ones. A derived class can initialize the base class by implementing one or more of its constructors. The base class can also define common behavior for derived classes through abstract methods, which are methods without implementation that must be overridden in derived classes.">base class</a> for other abstract classes. In such cases, subclasses are responsible for implementing any abstract methods inherited from both the superclass and its direct abstract superclass.</p>
+<pre><code class="language-kotlin">abstract class Animal {
+    abstract fun makeSound()
+}
+
+abstract class Mammal : Animal() {
+    abstract fun eat()
+}
+
+class Cat : Mammal() {
+    override fun makeSound() {
+        println("Meow!")
+    }
+
+    override fun eat() {
+        println("The cat is eating.")
+    }
+}
+</code></pre>
+<p>In this example, the class <code class="language-kotlin">Animal</code> is an abstract class with the abstract function <code class="language-kotlin">makeSound()</code>. The class <code class="language-kotlin">Mammal</code> extends <code class="language-kotlin">Animal</code> and adds an additional abstract function <code class="language-kotlin">eat()</code>. The class <code class="language-kotlin">Cat</code> then extends <code class="language-kotlin">Mammal</code> and provides implementations for both <code class="language-kotlin">makeSound()</code> and <code class="language-kotlin">eat()</code>.</p>
+<p>By using abstract classes in this way, we can establish a hierarchy where each level provides more specialized behavior. In the above case, <code class="language-kotlin">Mammal</code> extends <code class="language-kotlin">Animal</code> to add mammal-specific behaviors, and <code class="language-kotlin">Cat</code> further extends <code class="language-kotlin">Mammal</code> to define specific behaviors for cats.</p>
+<p>In Kotlin, it is also possible to make an abstract class inherit from an open class while overriding a non-abstract <code class="language-kotlin">open</code> member with an abstract one using two keywords: <code class="language-kotlin">abstract override</code>.</p>
+<pre><code class="language-kotlin">open class Polygon {
+    open fun draw() {
+        // Some default polygon drawing method
+    }
+}
+
+abstract class WildShape : Polygon() {
+    // Classes that inherit WildShape need to provide their own draw method instead of using the default on Polygon
+    abstract override fun draw()
+}</code></pre>
+<h5 id="abstract-classes-vs-interfaces">Abstract classes vs. interfaces</h5>
+<p>One of the common questions in object-oriented programming is about the difference between abstract classes and interfaces. In Kotlin, both of these concepts are used to define contracts or behaviors that classes can implement or inherit from. However, there are some key differences between them, which affect how they are used and designed. </p>
+<table border="1" cellpadding="1" cellspacing="1">
+<thead>
+<tr>
+<th> </th>
+<th style="text-align: center;">Abstract classes</th>
+<th style="text-align: center;">Interfaces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width: 14%;">Instantiation</td>
+<td style="width: 43%;">They cannot be instantiated directly. They are meant to serve as a base for subclasses to inherit from.</td>
+<td>They cannot be instantiated directly. They define a contract of methods and properties that implementing classes must adhere to.</td>
+</tr>
+<tr>
+<td>Constructors</td>
+<td>They can have constructors, including both primary and secondary constructors. Subclasses are responsible for invoking the appropriate superclass constructor.</td>
+<td>They cannot have constructors. They only declare methods and properties without any implementation.</td>
+</tr>
+<tr>
+<td>State</td>
+<td>They can have member variables and non-abstract methods with <a class="theory-lookup not-relevant" href="/learn/step/31243" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a default implementation refers to the pre-defined functionality provided for an interface's abstract methods or properties. | It allows you to skip overriding certain methods in a derived class, unless the default implementation is not sufficient for your goals. Since interfaces in Kotlin cannot maintain state and are merely contracts for other classes to implement, you cannot construct an interface. However, you can use getters to achieve the same result. Default implementations can also be added to interfaces, making them more than just a pattern for building classes.">default implementations</a>. They can also hold state and maintain internal data.</td>
+<td>They cannot hold state or define member variables. They are purely focused on declaring behavior.</td>
+</tr>
+<tr>
+<td>Inheritance</td>
+<td>Subclasses can extend only one abstract class. In Kotlin, class inheritance is limited to a single class, and abstract classes provide a way to establish an inheritance hierarchy.</td>
+<td>Implementing classes can implement multiple interfaces. Kotlin supports multiple inheritance through interfaces, allowing classes to implement multiple interfaces at once.</td>
+</tr>
+<tr>
+<td>Abstract and Non-Abstract Members</td>
+<td>They can have both abstract and non-abstract methods and properties. Subclasses must provide implementations for abstract members while inheriting non-abstract members.</td>
+<td>
+<p>They  can declare abstract methods or methods that have default implementations. Both types of methods can be overridden by implementing classes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>When deciding between abstract classes and interfaces, consider the following guidelines:</p>
+<ul>
+<li>Use abstract classes when you want to provide a default implementation or when you need to maintain internal state within the base class.</li>
+<li>Use interfaces when you want to define a contract of behavior that multiple unrelated classes can implement or when you need to achieve multiple inheritance.</li>
+</ul>
+<h5 id="using-abstract-classes-and-interfaces-together">Using abstract classes and interfaces together</h5>
+<p>In Kotlin, it's possible to use abstract classes and interfaces together to create a more flexible class hierarchy. This approach allows you to incorporate common members and define contracts through interfaces, providing a versatile and extensible structure. Concrete classes can then extend the abstract class while implementing additional interfaces as needed.</p>
+<p>Let's examine a simple example to understand this concept:</p>
+<pre><code class="language-kotlin">interface Shape {
+    fun calculateArea(): Double
+    fun calculatePerimeter(): Double
+}
+
+abstract class AbstractShape : Shape {
+    // Common behavior or properties for shapes can be implemented here
+}
+
+class Rectangle(private val width: Double, private val height: Double) : AbstractShape() {
+    override fun calculateArea(): Double {
+        return width * height
+    }
+
+    override fun calculatePerimeter(): Double {
+        return 2 * (width + height)
+    }
+}
+
+class Circle(private val radius: Double) : AbstractShape() {
+    override fun calculateArea(): Double {
+        return Math.PI * radius * radius
+    }
+
+    override fun calculatePerimeter(): Double {
+        return 2 * Math.PI * radius
+    }
+}
+</code></pre>
+<p>In this example, we have an interface called <code class="language-kotlin">Shape</code> with two methods: <code class="language-kotlin">calculateArea()</code> and <code class="language-kotlin">calculatePerimeter()</code>. The abstract class <code class="language-kotlin">AbstractShape</code> implements the <code class="language-kotlin">Shape</code> interface, providing a common base for different shapes. Then, we have two concrete classes, <code class="language-kotlin">Rectangle</code> and <code class="language-kotlin">Circle</code>, which extend <code class="language-kotlin">AbstractShape</code> and provide specific implementations of the area and perimeter calculations for their respective shapes.</p>
+<p>By utilizing both abstract classes and interfaces, your code becomes more flexible. Abstract classes enable you to encapsulate common behavior and state, while interfaces establish contracts for implementing classes. This combination empowers you to design class hierarchies that are maintainable, extensible, and adhering to good object-oriented principles.</p>
+<h5 id="best-practices">Best practices</h5>
+<p>There are some best practices to keep in mind when thinking about using abstract classes:</p>
+<ul>
+<li>
+<p>Use abstract classes to define a <strong>common</strong> interface and behavior. Abstract classes are a valuable tool for defining a common interface and behavior for related classes. Use them to encapsulate common functionality and provide a consistent structure for subclasses.</p>
+</li>
+<li>
+<p><strong>Avoid overusing</strong> abstract classes. While abstract classes can be useful, it is important not to overuse them. Only use abstract classes when there is a clear need for a common interface and behavior among related classes. Otherwise, consider using interfaces or composition instead.</p>
+</li>
+<li>
+<p>Design for<strong> extensibility</strong>. When designing abstract classes, think about how they might be extended in the future. Make sure that the class hierarchy is flexible and can accommodate new subclasses without requiring major changes.</p>
+</li>
+<li>
+<p>Provide<strong> clear documentation</strong>. Abstract classes can be complex, so it's important to provide clear documentation for developers who will be using or extending them. Make sure to document the purpose of the class, its methods, and any requirements or constraints on its use.</p>
+</li>
+<li>
+<p>Consider using interfaces in <strong>combination</strong> with abstract classes. Abstract classes and interfaces can be used together to create a more flexible class hierarchy. Consider using interfaces to define contracts for behavior, while using abstract classes to provide common implementations and maintain state.</p>
+</li>
+</ul>
+<h5 id="conclusion">Conclusion</h5>
+<p>Let us sum up what you have learned in this topic:</p>
+<ul>
+<li>Abstract classes are declared using the <code class="language-kotlin">abstract</code> keyword.</li>
+<li>Abstract classes cannot be instantiated directly.</li>
+<li>Subclasses of abstract classes must provide implementations for all abstract methods.</li>
+<li>Abstract classes can have non-abstract methods with a common implementation.</li>
+<li>Abstract classes can serve as the base for other abstract classes, creating an inheritance hierarchy.</li>
+<li>Abstract classes promote code reusability and enforce a consistent structure across related classes.</li>
+<li>Abstract classes can implement interfaces, allowing for a combination of shared behavior through inheritance and contracts defined by interfaces.</li>
+</ul>
+<p>Remember also that abstract knowledge turns into concrete skills through practice. So, what are you waiting for? Let's solve some problems.</p>
+</div>

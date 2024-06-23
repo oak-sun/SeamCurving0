@@ -1,0 +1,20 @@
+type: sorting
+options:
+  - '-'
+  - ++
+  - '%'
+  - +
+  - '*='
+files:
+  - name: src/Main.kt
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10782#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4

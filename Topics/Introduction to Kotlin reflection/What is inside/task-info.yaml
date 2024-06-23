@@ -1,0 +1,14 @@
+type: code
+custom_name: What is inside ?
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/25902#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 18 Jun 2024 22:45:58 UTC"
+record: -1
+submission_language: kotlin
